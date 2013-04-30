@@ -19,6 +19,6 @@ public class HelloWorld2 {
  * 実行するとどうなるでしょうか?
  * (1) Hello
  * (2) JavaWorld
+ * (3) HellWorld
  * (4) HelloJavaWorld
- * (3) HelloDukeWorld
  */
