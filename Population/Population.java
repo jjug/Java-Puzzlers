@@ -17,7 +17,7 @@ public class Population {
         population2011.put("葛飾区", 435_253); population2012.put("葛󠄁飾区", 431_796);
         population2011.put("品川区", 351_350); population2012.put("品川区", 348_590);
 
-        int min = Integer.MAX_VALUE, max = 0;
+        int min = 0, max = 0;
         for (String ku : population2011.keySet()) {
             int change = Math.abs(population2012.get(ku) - population2011.get(ku));
             if (change < min) min = change;
