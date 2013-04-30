@@ -7,8 +7,9 @@ public class HelloWorld2 {
             sw.write("Hello");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("World");
         }
-        System.out.println("World");
     }
 }
 
