@@ -5,8 +5,10 @@ public class HelloWorld2 {
     public static void main(String... args) {
         try (OutputStreamWriter sw = new OutputStreamWriter(System.out)) {
             sw.write("Hello");
+            sw.close();
+            sw.write("Duke");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Java");
         } finally {
             System.out.println("World");
         }
@@ -16,7 +18,7 @@ public class HelloWorld2 {
 /*
  * 実行するとどうなるでしょうか?
  * (1) Hello
- * (2) World
- * (3) HelloWorld
- * (4) java.io.IOExceptionが発生する
+ * (2) JavaWorld
+ * (4) HelloJavaWorld
+ * (3) HelloDukeWorld
  */
