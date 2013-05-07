@@ -1,0 +1,72 @@
+二進数表現のパズラー問題として、これらのいずれかなど、どうでしょうか ?
+ 
+変数 a の値 'l' が小文字のエルであることがポイント。
+数字の 1 と似たようなフォントを使って示すことがポイント。
+これは、元祖パズラーでも問題にしています。
+ちゃんと、'L' を使いましょう ... ってことを言いたいネタ。
+ 
+[問題1]
+public class Test {
+  public static void main(String args[]) {
+    long a = 0b0000_0000_0000_0000_0000_0000_0000_000l;
+    long b = 1L;
+    System.out.println("a + b = " + (a + b));
+  }
+}
+ 
+(a) a + b = 10
+[b] a + b = 1
+(c) a + b = 2
+(d) その他
+ 
+これは、println の中の "a + b" + a + b の '+ a' のプラスは文字列連結で、かつ、
+'+ b' のプラスも文字列連結であることがポイント。 
+ 
+[問題2]
+public class Test {
+  public static void main(String args[]) {
+    long b = 1L;
+    long a = 0b0000_0000_0000_0000_0000_0000_0000_000l;
+    System.out.println("a + b = " + a + b);
+  }
+}
+ 
+[a] a + b = 10
+(b) a + b = 1
+(c) a + b = 2
+(d) その他
+ 
+0b の後ろに 0 がいくつ先行しても、実際の値を表現する桁が 32bit であれば、
+値は 32bin の値となる。よって、以下の a は 36桁ですが、最初の 4 桁が 0 で、
+その後ろの 32bit が all 1 なので、a の値は -1 です。
+なので、(a + b) の値は 0 になる。
+ 
+[問題3]
+public class Test {
+  public static void main(String args[]) {
+    long a = 0b0000_1111_1111_1111_1111_1111_1111_1111_1111;
+    long b = 1L;
+    System.out.println("a + b = " + (a + b));
+  }
+}
+ 
+(a) a + b = 4294967296
+(b) a + b = 1
+[c] a + b = 0
+(d) その他
+ 
+サフィックスの L が付くと -1 にならずに、4294967295 になる。
+ 
+[問題4]
+public class Test {
+  public static void main(String args[]) {
+    long a = 0b0000_1111_1111_1111_1111_1111_1111_1111_1111L;
+    long b = 1L;
+    System.out.println("a + b = " + (a + b));
+  }
+}
+ 
+[a] a + b = 4294967296
+(b) a + b = 0
+(c) a + b = 1
+(d) その他

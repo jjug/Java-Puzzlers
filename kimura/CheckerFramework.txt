@@ -1,0 +1,43 @@
+JDK8 の Type Annotation から ... Checker Framework を使ったプログラム例ですが、
+ 
+@Interned はオブジェクト等価性を == で比較できることを示す。
+でも、intern されていることを保証しない型アノテーションなので、
+(1) は、equals() のみが true になる。
+ 
+[問題1]
+import checkers.interning.quals.Interned;
+public class Test {
+  public static void main(String args[]) {
+    @Interned String s1 = new @Interned String("abc");
+    @Interned String s2 = new @Interned String("abc");
+    if(s1 == s2) System.out.println("s1 == s2");
+    if(s1.equals(s2)) System.out.println("s1.equals(s2)");
+  }
+}
+ 
+(a) (何も表示されない)
+[b] s1.equals(s2)
+(c) s1 == s2
+    s1.equals(s2)
+(d) その他
+ 
+ 
+intern されているオブジェクトを参照している状態にするのは、
+プログラムコードで実装することが前提。
+ 
+[問題2]
+import checkers.interning.quals.Interned;
+public class Test {
+  public static void main(String args[]) {
+    @Interned String s1 = (new String("abc")).intern();
+    @Interned String s2 = (new String("abc")).intern();
+    if(s1 == s2) System.out.println("s1 == s2");
+    if(s1.equals(s2)) System.out.println("s1.equals(s2)");
+  }
+}
+ 
+(a) (何も表示されない)
+(b) s1.equals(s2)
+[c] s1 == s2
+    s1.equals(s2)
+(d) その他
