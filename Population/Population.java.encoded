@@ -1,0 +1,29 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Population {
+    public static void main(String... args) {
+        Map<String, Integer> population2011 = new HashMap<>();
+        Map<String, Integer> population2012 = new HashMap<>();
+
+        population2011.put("\u4e16\u7530\u8c37\u533a", 835_819); population2012.put("\u4e16\u7530\u8c37\u533a", 831_654);
+        population2011.put("\u7df4\u99ac\u533a", 693_368); population2012.put("\u7df4\u99ac\u533a", 693_368);
+        population2011.put("\u5927\u7530\u533a", 674_920); population2012.put("\u5927\u7530\u533a", 674_527);
+        population2011.put("\u6c5f\u6238\u5ddd\u533a", 654_537); population2012.put("\u6c5f\u6238\u5ddd\u533a", 651_884);
+        population2011.put("\u8db3\u7acb\u533a", 644_448); population2012.put("\u8db3\u7acb\u533a", 641_888);
+        population2011.put("\u6749\u4e26\u533a", 527_133); population2012.put("\u6749\u4e26\u533a", 527_158);
+        population2011.put("\u677f\u6a4b\u533a", 517_404); population2012.put("\u677f\u6a4b\u533a", 518_116);
+        population2011.put("\u6c5f\u6771\u533a", 450_950); population2012.put("\u6c5f\u6771\u533a", 446_393);
+        population2011.put("\u845b\u98fe\u533a", 435_253); population2012.put("\u845b\udb40\udd01\u98fe\u533a", 431_796);
+        population2011.put("\u54c1\u5ddd\u533a", 351_350); population2012.put("\u54c1\u5ddd\u533a", 348_590);
+
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (String ku : population2011.keySet()) {
+            int change = Math.abs(population2012.get(ku) - population2011.get(ku));
+            if (change < min) min = change;
+            if (max < change) max = change;
+        }
+        System.out.println("min = " + min + ", max = " + max);
+    }
+}
